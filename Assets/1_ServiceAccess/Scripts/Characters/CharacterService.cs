@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,5 +11,10 @@ namespace Excercise1
             => _charactersById.TryAdd(id, character);
         public bool TryRemoveCharacter(string id)
             => _charactersById.Remove(id);
+
+        public ICharacter GetCharacter(string playerId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

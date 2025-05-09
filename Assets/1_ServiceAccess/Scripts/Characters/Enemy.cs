@@ -19,6 +19,8 @@ namespace Excercise1
         protected override void OnEnable()
         {
             base.OnEnable();
+            var characterservice = FindAnyObjectByType<CharacterService>();
+            _player = characterservice.GetCharacter(playerId);
             //TODO: Get the reference to the player.
             if (_player == null)
                 Debug.LogError($"{_logTag} Player not found!");

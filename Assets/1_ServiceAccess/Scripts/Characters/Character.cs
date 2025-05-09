@@ -6,10 +6,12 @@ namespace Excercise1
     public class Character : MonoBehaviour, ICharacter
     {
         [SerializeField] protected string id;
-        [SerializeField] protected CharacterService characterservice;
+         private CharacterService characterservice;
         protected virtual void OnEnable()
         {
+            characterservice = FindAnyObjectByType<CharacterService>();
             characterservice.TryAddCharacter(id, this);
+
                 //TODO: Add to CharacterService. The id should be the given serialized field. 
         }
 
