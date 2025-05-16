@@ -21,10 +21,6 @@ namespace Gameplay
           
         }
 
-        public void Update()
-        {
-            
-        }
         public void Jump()
         {
             playerController.RunJumpCoroutine();

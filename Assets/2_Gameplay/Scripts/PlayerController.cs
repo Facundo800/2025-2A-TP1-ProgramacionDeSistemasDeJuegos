@@ -58,25 +58,12 @@ namespace Gameplay
 
         private void HandleMoveInput(InputAction.CallbackContext ctx)
         {
-            var direction = ctx.ReadValue<Vector2>().ToHorizontalPlane();
-            if (_isJumping || _isDoubleJumping)
-                direction *= airborneSpeedMultiplier;
-            _character?.SetDirection(direction);
+           _currentState.Walk(ctx.ReadValue<Vector2>());
         }
 
         private void HandleJumpInput(InputAction.CallbackContext ctx)
         {
-            //TODO: This function is barely readable. We need to refactor how we control the jumping
-            if (_isJumping)
-            {
-                if (_isDoubleJumping)
-                    return;
-                RunJumpCoroutine();
-                _isDoubleJumping = true;
-                return;
-            }
-            RunJumpCoroutine();
-            _isJumping = true;
+            _currentState.Jump();
         }
 
         public void RunJumpCoroutine() 
@@ -88,14 +75,7 @@ namespace Gameplay
 
         private void OnCollisionEnter(Collision other)
         {
-            foreach (var contact in other.contacts)
-            {
-                if (Vector3.Angle(contact.normal, Vector3.up) < 5)
-                {
-                    _isJumping = false;
-                    _isDoubleJumping = false;
-                }
-            }
+            _currentState.OnCollisionEnter(other);
         }   
     }
 }

@@ -14,12 +14,12 @@ namespace Gameplay
         }
         public void Enter()
         {
-            
+            //Estos funciones estan por si son necesarias a otros estados, siguiendo al patron State
         }
 
         public void Exit()
         {
-            
+            //Estos funciones estan por si son necesarias a otros estados, siguiendo al patron State
         }
 
         public void Jump()
@@ -30,11 +30,6 @@ namespace Gameplay
             }
             playerController.RunJumpCoroutine();
             hasdoubleJumped = true;
-        }
-
-        public void Update()
-        {
-            
         }
 
         public void Walk(Vector2 vector2)

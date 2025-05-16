@@ -5,7 +5,6 @@ namespace Gameplay
     public interface IState 
     {
         void Exit();
-        void Update();
         void Enter();
         void Jump();
         void Walk(Vector2 vector2);
