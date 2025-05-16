@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,9 +15,24 @@ namespace Gameplay
         private bool _isDoubleJumping;
         private Character _character;
         private Coroutine _jumpCoroutine;
+        IState _currentState;
+        public float GetairborneSpeedMultiplier()
+        {
+            return airborneSpeedMultiplier;
+        }
 
         private void Awake()
-            => _character = GetComponent<Character>();
+        { _character = GetComponent<Character>();
+            _currentState = new GroundState(_character, this);
+          
+          
+        }
+        public void ChangeState(IState state)
+        {
+            _currentState.Exit();
+            _currentState = state;
+            _currentState.Enter();
+        }
 
         private void OnEnable()
         {
@@ -63,7 +79,7 @@ namespace Gameplay
             _isJumping = true;
         }
 
-        private void RunJumpCoroutine()
+        public void RunJumpCoroutine() 
         {
             if (_jumpCoroutine != null)
                 StopCoroutine(_jumpCoroutine);
@@ -80,6 +96,6 @@ namespace Gameplay
                     _isDoubleJumping = false;
                 }
             }
-        }
+        }   
     }
 }

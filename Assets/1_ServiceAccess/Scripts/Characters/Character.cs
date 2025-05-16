@@ -6,18 +6,17 @@ namespace Excercise1
     public class Character : MonoBehaviour, ICharacter
     {
         [SerializeField] protected string id;
-         private CharacterService characterservice;
         protected virtual void OnEnable()
         {
-            characterservice = FindAnyObjectByType<CharacterService>();
-            characterservice.TryAddCharacter(id, this);
+            
+            CharacterService.instance.TryAddCharacter(id, this);
 
                 //TODO: Add to CharacterService. The id should be the given serialized field. 
         }
 
         protected virtual void OnDisable()
         {
-            characterservice.TryRemoveCharacter(id);
+            CharacterService.instance.TryRemoveCharacter(id);
             //TODO: Remove from CharacterService.
         }
     }
