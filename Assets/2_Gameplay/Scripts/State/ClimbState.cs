@@ -2,18 +2,31 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class ClimbState : MonoBehaviour
+    public class ClimbState : IState
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        public void Enter()
         {
-        
+            
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Exit()
         {
-        
+
+        }
+
+        public void Jump()
+        {
+
+        }
+
+        public void OnCollisionEnter(Collision other)
+        {
+
+        }
+
+        public void Walk(Vector2 vector2)
+        {
+
         }
     }
 }
