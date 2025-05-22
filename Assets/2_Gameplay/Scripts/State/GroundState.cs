@@ -13,12 +13,12 @@ namespace Gameplay
         }
         public void Enter()
         {
-          
+            //These functions are available if needed by other states. following the State pattern.
         }
 
         public void Exit()
         {
-          
+            //These functions are available if needed by other states. following the State pattern.
         }
 
         public void Jump()
